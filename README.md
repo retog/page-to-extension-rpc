@@ -1,15 +1,37 @@
-# page-to-extension-messaging
+# page-to-extension-rpc
 
 ## What it does
 
-This extension includes a content script, which is injected only into: "https://mdn.github.io/webextensions-examples/content-script-page-script-messaging.html".
+This projet provides a webextension an a webpage that demostrate an RPC Connection between
+page an extension.
 
-The content script listens for clicks on a particular button on the page. When the button is clicked, the content script sends a message to any scripts running in the page.
+This extension includes a content script, which is injected into the accessed pages. This
+content script provides an api that can be accessed from any page using a [muxrpc](https://github.com/ssb-js/muxrpc) connection.
 
-Conversely, the content script listens for messages from the same window posted using window.postMessage. When the content script receives such a message, it displays an alert.
+The communication uses the pager to extension messaging described at https://github.com/mdn/webextensions-examples/tree/master/page-to-extension-messaging, builds [pull-streams](https://github.com/pull-stream/pull-stream) on top of those messages and uses these streams for the RPC coknnection.
 
-To test it out, visit https://mdn.github.io/webextensions-examples/content-script-page-script-messaging.html and press the buttons. One button sends a message from the page script to the content script, the other button sends a message in the other direction.
+
+## How to try it
+
+Building
+```
+  npm install
+  npm run-script build
+```
+
+Running
+
+To run the example you need to have the extension intalle and acce the example page.
+
+    npm run-script start:ext
+
+This should start a browser with the extension. Alternatively you can also load the extension from the `webext` folder as temporary extension in your browser. Access the file `page.html` in the `site` folder.
+
+    npm run-script serve
+
+Now you can access http://localhost:9090/page.html
+
 
 ## What it shows
 
-How to exchange messages between an extension's content scripts, and scripts running in a web page.
+How to make an RPC connection between an extension's content scripts, and scripts running in a web page.
