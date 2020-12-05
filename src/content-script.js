@@ -58,9 +58,6 @@ function messagePageScript() {
 
 
 
-var fromContentScript = document.getElementById("from-content-script");
-fromContentScript.addEventListener("click", messagePageScript);
-
 const manifest = {
   //async is a normal async function
   hello: 'async',
