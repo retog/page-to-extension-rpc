@@ -3,8 +3,6 @@ import { pull } from 'pull-stream'
 import { Buffer } from 'buffer'
 
 
-
-
 let messageDataCallback = null
 let messageDataBuffer = []
 

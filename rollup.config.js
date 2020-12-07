@@ -8,6 +8,39 @@ import globals from 'rollup-plugin-node-globals'
 const production = !process.env.ROLLUP_WATCH;
 
 export default [{
+	input: 'src/background-script.js',
+	output: {
+		sourcemap: true,
+		format: 'iife',
+		name: 'app',
+		file: 'webext/background-script.js',
+		intro: 'const global = window;'
+	},
+	plugins: [
+    commonjs(),
+    globals(),
+		builtins(),
+
+		// If you have external dependencies installed from
+		// npm, you'll most likely need these plugins. In
+		// some cases you'll need additional configuration -
+		// consult the documentation for details:
+		// https://github.com/rollup/plugins/tree/master/packages/commonjs
+		resolve({
+			browser: true,
+			dedupe: []
+		}),
+		
+
+		// If we're building for production (npm run build
+		// instead of npm run dev), minify
+		// production && terser()
+	],
+	watch: {
+		clearScreen: false
+	}
+},
+{
 	input: 'src/content-script.js',
 	output: {
 		sourcemap: true,

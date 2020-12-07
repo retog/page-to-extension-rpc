@@ -18,6 +18,10 @@
       "matches": ["*://*/*"],
       "js": ["content-script.js"]
     }
-  ]
+  ],
+
+  "background": {
+    "scripts": ["background-script.js"]
+  }
 
 }
